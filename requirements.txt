@@ -1,0 +1,8 @@
+Django==1.11.2
+django-cors-headers==2.1.0
+djangorestframework==3.6.3
+PyMySQL==0.7.11
+pytz==2017.2
+requests==2.18.1
+urllib3==1.21.1
+Pillow==4.1.1

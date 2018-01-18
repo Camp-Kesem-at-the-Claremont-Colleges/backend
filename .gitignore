@@ -1,0 +1,14 @@
+*.pyc
+__pycache__/*
+
+media/**
+!media/**/init.txt
+
+static/admin/**
+static/rest_framework/**
+
+.DS_Store
+Thumbs.db
+db.sqlite3
+
+*.pem
