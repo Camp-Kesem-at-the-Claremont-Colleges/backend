@@ -3,13 +3,13 @@
 PRODUCTION_KEY = 'super_secret_key'
 
 # use to change db settings
-is_production = False
+is_production = True
 
 # information from mysql setup goes here
-DEV_HOST = ''
-DEV_DB = ''
-DEV_USER = ''
-DEV_PASSWORD = ''
+DEV_HOST = 'genna.czvta9z7dure.us-east-2.rds.amazonaws.com'
+DEV_DB = 'cknewsletter'
+DEV_USER = 'genna'
+DEV_PASSWORD = 'buttmunch123'
 
 LOCAL_HOST = 'localhost'
 LOCAL_DB = 'cknewsletter'
