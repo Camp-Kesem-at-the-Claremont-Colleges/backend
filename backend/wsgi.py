@@ -14,7 +14,7 @@ pymysql.install_as_MySQLdb()
 
 from django.core.wsgi import get_wsgi_application
 
-sys.path.append('/home/ec2-user/claremont-newsletter/backend')
+sys.path.append('/home/ubuntu/claremont-newsletter/backend')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
 
