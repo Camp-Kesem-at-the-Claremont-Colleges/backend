@@ -6,10 +6,10 @@ PRODUCTION_KEY = 'super_secret_key'
 is_production = False
 
 # information from mysql setup goes here
-DEV_HOST = 'genna.czvta9z7dure.us-east-2.rds.amazonaws.com'
-DEV_DB = 'cknewsletter'
-DEV_USER = 'genna'
-DEV_PASSWORD = 'buttmunch123'
+DEV_HOST = ''
+DEV_DB = ''
+DEV_USER = ''
+DEV_PASSWORD = ''
 
 LOCAL_HOST = 'localhost'
 LOCAL_DB = 'cknewsletter'

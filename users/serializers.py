@@ -4,12 +4,11 @@ from . import models
 
 class UserProfileSerializer(serializers.ModelSerializer):
     """A serializer for our user profile objects"""
-    image = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = models.UserProfile
         fields = ['username', 'role', 'first_name', 'last_name', 
-        'bio', 'avatar', 'is_staff', 'image',
+        'bio', 'avatar', 'is_staff',
         'camp_name', 'password']
         read_only_fields = ['is_staff']
         extra_kwargs = {
