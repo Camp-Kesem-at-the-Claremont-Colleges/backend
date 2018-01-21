@@ -29,7 +29,7 @@ SECRET_KEY = 'ocm0md17qp0@)-j@5_gm-*yc^8vfw71n7^897gm!c@h0ed52c-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not is_production
 
-ALLOWED_HOSTS = ['api.campkesemclaremont.us', 'localhost']
+ALLOWED_HOSTS = ['data.campkesemclaremont.us', 'localhost']
 
 
 # Application definition
