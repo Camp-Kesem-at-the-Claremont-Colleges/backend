@@ -57,6 +57,14 @@ class CommentSerializer(serializers.ModelSerializer):
 
         return comment
 
+class ArticleSlugSerializer(serializers.ModelSerializer):
+    """Serializes slugs for Articles"""
+
+    class Meta:
+        model = models.Article
+        fields = ['id', 'title', 'slug', 'blurb']
+        read_only_fields = ['id', 'title', 'slug', 'blurb']
+
 class ArticleSerializer(serializers.ModelSerializer):
     """Serializes a name field for our Article API"""
 

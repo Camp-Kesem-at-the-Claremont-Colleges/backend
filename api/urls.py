@@ -19,4 +19,5 @@ router.register('login', userViews.LoginViewSet, base_name='login')
 urlpatterns = [
     url(r'', include(router.urls)),
     url(r'^articles/list/published/$', blogViews.ArticlePublishedList.as_view()),
+    url(r'^articles/list/slugs/$', blogViews.ArticleSlugList.as_view())
 ]

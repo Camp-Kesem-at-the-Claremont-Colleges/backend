@@ -23,7 +23,6 @@ class ArticleHomeSetPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 20
 
-
 class ArticleViewSet(viewsets.ModelViewSet):
     """Article API Viewset."""
     serializer_class = serializers.ArticleSerializer
@@ -53,6 +52,15 @@ class ArticlePublishedList(generics.ListAPIView):
             return articles
         return articles.order_by('date_created').reverse()
 
+class ArticleSlugList(generics.ListAPIView):
+    serializer_class = serializers.ArticleSlugSerializer
+
+    def get_queryset(self):
+        articles = Article.objects.filter(is_published=True)
+        if not articles:
+            return articles
+        return articles.order_by('date_created').reverse()
+
 class TagViewSet(viewsets.ModelViewSet):
     """Tag API Viewset."""
     serializer_class = serializers.TagSerializer
@@ -61,7 +69,6 @@ class TagViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     filter_backends = (filters.SearchFilter,)
     search_fields = ('label',)
-
 
 class CommentViewSet(viewsets.ModelViewSet):
     """Tag API Viewset."""
