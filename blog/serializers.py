@@ -6,9 +6,9 @@ from . import models
 from images.models import Image
 from images.serializers import ImageSerializer
 
-from users.serializers import UserProfileSerializer
+from users.serializers import UserProfileSerializer, UserCommentSerializer
 
-class TagSerializer(serializers.Serializer):
+class TagSerializer(serializers.ModelSerializer):
     """Serializes a tag for our Tag API"""
     label = serializers.CharField()
 
@@ -23,6 +23,39 @@ class TagSerializer(serializers.Serializer):
         tag.save()
 
         return tag
+
+class CommentSerializer(serializers.ModelSerializer):
+    """Serializes a tag for our Tag API"""
+    posted_by = UserCommentSerializer(read_only=True)
+    article_id = serializers.IntegerField(write_only=True)
+    article = serializers.PrimaryKeyRelatedField(read_only=True)
+    comment = serializers.CharField()
+
+    class Meta:
+        model = models.Comments
+        fields = ['id', 'comment', 'article', 
+        'article_id', 'posted_by', 'is_resolved',
+        'date_updated']
+        read_only_fields = ['id', 'date_updated']
+
+    def update(self, instance, validated_data):
+        instance.comment = validated_data.get('comment', instance.comment)
+        instance.is_resolved = validated_data.get('is_resolved', instance.is_resolved)
+
+        instance.save()
+
+        return instance
+    
+    def create(self, validated_data):
+        comment = models.Comments(
+            article = models.Article(id=validated_data['article_id']),
+            comment = validated_data['comment'],
+            posted_by = self.context['request'].user,
+            is_resolved = False
+        )
+        comment.save()
+
+        return comment
 
 class ArticleSerializer(serializers.ModelSerializer):
     """Serializes a name field for our Article API"""

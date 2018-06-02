@@ -54,3 +54,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+
+class UserCommentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.UserProfile
+        fields = ['avatar', 'camp_name']

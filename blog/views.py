@@ -12,7 +12,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework import viewsets, status, filters
 from rest_framework.response import Response
 
-from .models import Article, Tags
+from .models import Article, Tags, Comments
 
 from . import serializers
 
@@ -61,3 +61,13 @@ class TagViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     filter_backends = (filters.SearchFilter,)
     search_fields = ('label',)
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    """Tag API Viewset."""
+    serializer_class = serializers.CommentSerializer
+    authentication_classes = (TokenAuthentication,)
+    queryset = Comments.objects.all()
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('article__id',)

@@ -34,3 +34,11 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comments(models.Model):
+    comment = models.CharField(max_length=255, blank=False)
+    article = models.ForeignKey(Article)
+    posted_by = models.ForeignKey(settings.AUTH_USER_MODEL)
+    is_resolved = models.BooleanField(default=False)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)

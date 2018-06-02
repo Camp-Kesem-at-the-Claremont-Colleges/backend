@@ -10,6 +10,7 @@ app_name = 'api'
 
 router = DefaultRouter()
 router.register('articles', blogViews.ArticleViewSet)
+router.register('comments', blogViews.CommentViewSet)
 router.register('images', imageViews.ImagesViewSet)
 router.register('profile', userViews.UserProfileViewSet)
 router.register('tags', blogViews.TagViewSet)
